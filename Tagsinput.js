@@ -3,10 +3,13 @@
 
   var Input = React.createClass({
     render: function(){
+      var inputClass = this.props.invalid ? 
+        "tagsinput-input tagsinput-input-invalid" :
+        "tagsinput-input"
       return this.transferPropsTo(
         React.DOM.input({
           type: "text",
-          className: "react-tagsinput-input",
+          className: inputClass,
         })
       );
     }
@@ -16,9 +19,10 @@
     render: function(){
       return (
         React.DOM.span({
-          className: "react-tagsinput-tag"
+          className: "tagsinput-tag"
         }, this.props.tag + " ", React.DOM.a({
-          className: "react-tagsinput-remove",
+          className: "tagsinput-remove",
+          onClick: this.props.remove
         }, "X"))
       );
     }
@@ -45,8 +49,12 @@
     },
 
     onKeyDown(e){
-      if(e.keyCode === 9 || e.keyCode === 13){
+      if(e.keyCode === 9 || e.keyCode === 13){ // tab enter按键新增tab
         this.addTag();
+      }
+
+      if(e.keyCode === 8 && this.state.tags.length > 0 && this.state.tag === ""){
+        this.removeTag(this.state.tags.length - 1);
       }
     },
 
@@ -68,20 +76,31 @@
       });
     },
 
+    removeTag: function(i){
+      var tags = this.state.tags.slice(0);
+      var tag = tags.splice(i,1);
+      this.setState({
+        tags,
+        invalid: false
+      });
+    },
+
     render: function(){
       var tagNodes = this.state.tags.map(function(tag,i){
         return Tag({
           key: i,
           tag: tag,
+          remove: this.removeTag.bind(null, i)
         });
       }.bind(this));
       return (
         React.DOM.div({
-          className: "react-tagsinput"
+          className: "tagsinput"
         }, tagNodes, Input({
           ref: "input",
           placeholder: this.props.placeholder,
           value: this.state.tag,
+          invalid: this.state.invalid,
           onKeyDown: this.onKeyDown,
           onChange: this.onChange,
         }))
@@ -94,6 +113,4 @@
   }else{
     this.ReactTagsInput = TagsInput;
   }
-
-
 }.call(this));

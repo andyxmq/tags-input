@@ -1,0 +1,11 @@
+.tagsinput{
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  padding: 5px;
+  overflow-y: auto;
+}
+
+.tagsinput-input{
+  outline: 0px;
+  border:1px solid transparent;
+}
