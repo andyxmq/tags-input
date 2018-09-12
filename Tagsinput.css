@@ -1,11 +1,33 @@
 .tagsinput{
   border: 1px solid #e8e8e8;
   background: #fff;
-  padding: 5px;
+  padding: 6px 8px;
   overflow-y: auto;
 }
 
 .tagsinput-input{
   outline: 0px;
   border:1px solid transparent;
+  width: 90%;
+}
+
+.tagsinput-input-invalid {
+  background: #FBD8DB !important;
+	color: #90111A !important;
+}
+
+.tagsinput-tag{
+  -moz-border-radius:2px;
+  -webkit-border-radius:2px;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  text-decoration: blink;
+  background-color: #fafafa;
+  color:rgba(0, 0, 0, 0.65);
+  padding: 5px;
+  font-size: 12px;
+  margin-right: 5px;
+  margin-bottom:5px;
+  font-family: helvetica;
 }
