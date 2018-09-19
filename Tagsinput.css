@@ -8,7 +8,9 @@
 .tagsinput-input{
   outline: 0px;
   border:1px solid transparent;
-  width: 90%;
+  width: 80px;
+  margin-right:5px;
+	margin-bottom:5px;
 }
 
 .tagsinput-input-invalid {
