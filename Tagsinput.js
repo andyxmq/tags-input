@@ -31,6 +31,9 @@
       return {
         tags: [],
         placeholder: 'add a tag',
+        onTagAdd: function () {},
+        onTagRemove: function () {},
+        onChange: function () {}
       };
     },
     getInitialState: function(){
@@ -39,6 +42,11 @@
         tag: "",
         invalid: false
       };
+    },
+    componentWillMount () {
+      this.setState({
+        tags: this.props.tags.slice(0)
+      });
     },
     onChange(event) {
       this.setState({
@@ -56,6 +64,10 @@
       }
     },
 
+    getTags () {
+      return this.state.tags
+    },
+
     addTag(){
       var tag = this.state.tag.trim();
 
@@ -70,7 +82,10 @@
         tag: "",
         invalid: false,
       },function(){
-
+        console.log(tag, this.state.tags)
+        this.props.onTagAdd(tag)
+        this.props.onChange(this.state.tags)
+        this.inputFocus()
       });
     },
 
