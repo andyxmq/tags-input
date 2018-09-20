@@ -82,10 +82,8 @@
         tag: "",
         invalid: false,
       },function(){
-        console.log(tag, this.state.tags)
         this.props.onTagAdd(tag)
         this.props.onChange(this.state.tags)
-        this.inputFocus()
       });
     },
 
