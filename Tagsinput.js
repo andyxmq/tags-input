@@ -56,6 +56,7 @@
 
     onKeyDown(e){
       if(e.keyCode === 9 || e.keyCode === 13){ // tab enter按键新增tab
+        e.preventDefault();
         this.addTag();
       }
 

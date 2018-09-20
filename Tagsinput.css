@@ -18,6 +18,9 @@
 	color: #90111A !important;
 }
 
+.tagsinput-remove {
+  content: "X";
+}
 .tagsinput-tag{
   -moz-border-radius:2px;
   -webkit-border-radius:2px;
