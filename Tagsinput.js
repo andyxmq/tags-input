@@ -105,6 +105,9 @@
       this.setState({
         tags,
         invalid: false
+      }, function(){
+        this.props.onTagRemove(tag[0])
+        this.props.onChange(tags)
       });
     },
 

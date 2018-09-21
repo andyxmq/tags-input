@@ -1,10 +1,22 @@
 # tags-input
 
-A simple react component for inputing tags.
+> A simple react component for inputing tags.
 
 ## Demo
 
 A demonstration can be found here: 
+
+## Install
+
+```bash
+  npm Install tagsinput --save
+```
+
+or 
+
+```bash
+  bower install tagsinput --save
+```
 
 ## Example
 

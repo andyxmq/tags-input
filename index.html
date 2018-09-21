@@ -24,7 +24,11 @@
 <script src="Tagsinput.js"></script>
 <script id="source" type="text/jsx">
 /** @jsx React.DOM */
+var validateTag = function (tag) {
+  return tag !== "" && !/_/.test(tag) // lets not allow underscore in our tags
+}
 
+var keyCodes = [13, 9, 32]
 var App = React.createClass({
   getInitialState: function () {
     return {
@@ -36,14 +40,17 @@ var App = React.createClass({
     this.setState({
       text: tags.join(",")
     });
+  },
+  saveTags: function () {
+    console.log("tags: ", this.refs.tags.getTags().join(", "));
   }
-
   , render: function () {
     var source = document.getElementById("source").textContent;
     return (
       <div>
         <h1>Tag input component</h1>
-        <ReactTagsInput onChange={this.onChange}/>
+        <ReactTagsInput ref="tags" validate={validateTag} addKeys={keyCodes} onChange={this.onChange}/>
+        <button onClick={this.saveTags}>Save</button>
         <h4>Tags:{this.state.text}</h4>
         <pre>{source}</pre>
       </div>

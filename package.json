@@ -1,0 +1,29 @@
+{
+  "name": "tagsinput",
+  "version": "0.1.0",
+  "description": "Simple react.js component for inputing tags",
+  "main": "Tagsinput.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyxmq/tags-input.git"
+  },
+  "keywords": [
+    "react",
+    "tags",
+    "input",
+    "component",
+    "javascript"
+  ],
+  "author": "andyxu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andyxmq/tags-input/issues"
+  },
+  "homepage": "https://github.com/andyxmq/tags-input#readme",
+  "dependencies": {
+    "react": "^0.12.2"
+  }
+}
