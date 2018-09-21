@@ -37,6 +37,14 @@ Tags to preloaded, default is `[]`.
 
 Placeholder text for the add a tag input, default is "Add a tag".
 
+### validate
+
+A function which returns true if a tag is valid, default function returns for every string but the empty string 
+
+### addKeys 
+
+An array of key codes that  add a tag, default is `[9, 13]` (Tab and Enter)
+
 ### onChange
 
 Callback when the tag input changes, the argument is an array of the current tags.

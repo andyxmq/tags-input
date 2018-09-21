@@ -30,7 +30,10 @@
     getDefaultProps: function(){
       return {
         tags: [],
-        placeholder: 'add a tag',
+        placeholder: 'Add a tag',
+        validate: function(tag) {return tag !== ""},
+        addKeys: [13,9],
+        removeKeys: [8],
         onTagAdd: function () {},
         onTagRemove: function () {},
         onChange: function () {}
@@ -55,13 +58,21 @@
     },
 
     onKeyDown(e){
-      if(e.keyCode === 9 || e.keyCode === 13){ // tab enter按键新增tab
+      var add = this.props.addKeys.indexOf(e.keyCode) !== -1;
+      var remove = this.props.removeKeys.indexOf(e.keyCode) !== -1
+      if(add){ // tab enter按键新增tab
         e.preventDefault();
         this.addTag();
       }
 
-      if(e.keyCode === 8 && this.state.tags.length > 0 && this.state.tag === ""){
+      if(remove && this.state.tags.length > 0 && this.state.tag === ""){
         this.removeTag(this.state.tags.length - 1);
+      }
+    },
+
+    onBlur: function (e){
+      if(this.state.tag !== "" && !this.state.invalid){
+        this.addTag();
       }
     },
 
@@ -72,7 +83,7 @@
     addTag(){
       var tag = this.state.tag.trim();
 
-      if(this.state.tags.indexOf(tag) !== -1 || tag ===""){
+      if(this.state.tags.indexOf(tag) !== -1 || !this.props.validate(tag)){
         return this.setState({
           invalid: true,
         });
@@ -115,6 +126,7 @@
           invalid: this.state.invalid,
           onKeyDown: this.onKeyDown,
           onChange: this.onChange,
+          onBlur: this.onBlur
         }))
       );
     }
