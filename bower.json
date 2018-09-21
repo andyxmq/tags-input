@@ -13,6 +13,7 @@
     "component",
     "javascript"
   ],
+  "version": "0.1.2",
   "homepage": "https://github.com/andyxmq/tags-input",
   "private": true,
   "ignore": [
