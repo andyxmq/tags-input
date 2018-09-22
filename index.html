@@ -23,11 +23,12 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.10.0/react-with-addons.js"></script>
 <script src="Tagsinput.js"></script>
 <script id="source" type="text/jsx">
+
 /** @jsx React.DOM */
 var validateTag = function (tag) {
   return tag !== "" && !/_/.test(tag) // lets not allow underscore in our tags
 }
-
+console.log(TagsInput)
 var keyCodes = [13, 9, 32]
 var App = React.createClass({
   getInitialState: function () {
@@ -49,7 +50,7 @@ var App = React.createClass({
     return (
       <div>
         <h1>Tag input component</h1>
-        <ReactTagsInput ref="tags" validate={validateTag} addKeys={keyCodes} onChange={this.onChange}/>
+        <TagsInput ref="tags" validate={validateTag} addKeys={keyCodes} onChange={this.onChange} tags={["tag1", "tag2"]}/>
         <button onClick={this.saveTags}>Save</button>
         <h4>Tags:{this.state.text}</h4>
         <pre>{source}</pre>

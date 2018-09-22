@@ -1,7 +1,16 @@
-;(function(){
+;(function(root, factory){
+  if (typeof define === 'function' && define.amd) { // AMD
+    define(['react'], factory)
+  } else if (typeof module !== "undefined" && module.exports) { // CMD
+    module.exports = factory(require('react'))
+  } else {
+    root.TagsInput = factory(root.React)
+  }
+}(this,function(React){
+  "use strict"
   var Input = React.createClass({
     render: function(){
-      var inputClass = this.props.invalid ? 
+      var inputClass = this.props.invalid ?
         "tagsinput-input tagsinput-input-invalid" :
         "tagsinput-input"
       return this.transferPropsTo(
@@ -134,10 +143,5 @@
       );
     }
   });
-
-  if(typeof module === 'object' && module.exports){
-    module.exports = TagsInput;
-  }else{
-    this.ReactTagsInput = TagsInput;
-  }
-}.call(this));
+  return TagsInput;
+}))

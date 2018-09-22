@@ -77,4 +77,6 @@ Returns an array of the current tags.
 
 ## Styling
 
-Look at `react-tagsinput.css` for an idea on how to style this component.
+Look at `tagsinput.css` for an idea on how to style this component.
+
+## [Changlog]()
