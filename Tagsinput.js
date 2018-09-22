@@ -13,10 +13,11 @@
       var inputClass = this.props.invalid ?
         "tagsinput-input tagsinput-input-invalid" :
         "tagsinput-input"
-      return this.transferPropsTo(
-        React.DOM.input({
+      return React.createElement("input",
+        React.__spread({}, this.props, {
           type: "text",
           className: inputClass,
+          placeholder: this.props.placeholder
         })
       );
     }
@@ -25,11 +26,11 @@
   var Tag = React.createClass({
     render: function(){
       return (
-        React.DOM.span({
+        React.createElement("span", {
           className: "tagsinput-tag"
-        }, this.props.tag + " ", React.DOM.a({
-          className: "tagsinput-remove",
-          onClick: this.props.remove
+        }, this.props.tag +" ", React.createElement("a", {
+          onClick: this.props.remove,
+          className:  "tagsinput-remove"
         }, "X"))
       );
     }
@@ -122,16 +123,16 @@
 
     render: function(){
       var tagNodes = this.state.tags.map(function(tag,i){
-        return Tag({
+        return React.createElement(Tag, {
           key: i,
           tag: tag,
           remove: this.removeTag.bind(null, i)
         });
       }.bind(this));
       return (
-        React.DOM.div({
+        React.createElement("div" ,{
           className: "tagsinput"
-        }, tagNodes, Input({
+        }, tagNodes, React.createElement(Input, {
           ref: "input",
           placeholder: this.props.placeholder,
           value: this.state.tag,

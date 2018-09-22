@@ -19,52 +19,22 @@
 </head>
 <body>
 <div id="content"></div>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.10.0/JSXTransformer.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.10.0/react-with-addons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.min.js"></script>
 <script src="Tagsinput.js"></script>
-<script id="source" type="text/jsx">
+<script>
+  var TagsComponent = React.createClass({
+    saveTags: function () {
+      console.log("tags: ", this.refs.tags.getTags().join(", "));
+    },
+    render: function () {
+      return React.createElement('div',null,
+        React.createElement(TagsInput, {ref: 'tags', tags: ['tag1', 'tag2']}),
+        React.createElement('button', {onClick: this.saveTags}, 'Save')
+      )
+    }
+  });
+  React.render(React.createElement(TagsComponent,null), document.getElementById('content'))
 
-/** @jsx React.DOM */
-var validateTag = function (tag) {
-  return tag !== "" && !/_/.test(tag) // lets not allow underscore in our tags
-}
-console.log(TagsInput)
-var keyCodes = [13, 9, 32]
-var App = React.createClass({
-  getInitialState: function () {
-    return {
-      text: ""
-    };
-  }
-
-  , onChange: function (tags) {
-    this.setState({
-      text: tags.join(",")
-    });
-  },
-  saveTags: function () {
-    console.log("tags: ", this.refs.tags.getTags().join(", "));
-  }
-  , render: function () {
-    var source = document.getElementById("source").textContent;
-    return (
-      <div>
-        <h1>Tag input component</h1>
-        <TagsInput ref="tags" validate={validateTag} addKeys={keyCodes} onChange={this.onChange} tags={["tag1", "tag2"]}/>
-        <button onClick={this.saveTags}>Save</button>
-        <h4>Tags:{this.state.text}</h4>
-        <pre>{source}</pre>
-      </div>
-    );
-  }
-});
-
-window.onload = function () {
-  React.renderComponent(
-    <App />
-    , document.getElementById("content")
-  );
-};
 </script>
 </body>
 </html>
