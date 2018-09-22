@@ -11,9 +11,10 @@
     "tags",
     "input",
     "component",
-    "javascript"
+    "javascript",
+    "react-component"
   ],
-  "version": "0.2.0",
+  "version": "0.2.2",
   "homepage": "https://github.com/andyxmq/tags-input",
   "private": true,
   "ignore": [
