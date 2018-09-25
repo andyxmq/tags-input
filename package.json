@@ -1,6 +1,6 @@
 {
   "name": "tagsinput",
-  "version": "0.2.4",
+  "version": "0.3.1",
   "description": "Simple react.js component for inputing tags",
   "main": "Tagsinput.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/andyxmq/tags-input#readme",
   "dependencies": {
-    "react": "^0.12.2"
+    "react": "^0.13.0"
   },
   "devDependencies": {
     "jsdom": "^12.0.0",

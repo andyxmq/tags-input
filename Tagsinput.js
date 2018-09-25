@@ -36,6 +36,10 @@
   });
 
   var TagsInput = React.createClass({
+    propTypes: {
+      value: React.PropTypes.array,
+      valueLink: React.propTypes.object
+    },
     getDefaultProps: function(){
       return {
         tags: [],
@@ -49,6 +53,7 @@
         onTagRemove: function () {},
         onChange: function () {},
         onChangeInput: function () {},
+        onBlur: function(){},
         classNamespace: "",
         addOnBlur: true
       };
@@ -87,17 +92,25 @@
     },
 
     onBlur: function (e){
-      if (!this.props.addOnBlur) return
-      if(this.state.tag !== "" && !this.state.invalid){
-        this.addTag(this.state.tag.trim());
+      var _this = this;
+
+      if (!this.props.addOnBlur) {
+        this.props.onBlur(this.state.tags);
+        return;
       }
+      if(this.state.tag !== "" && !this.state.invalid){
+        return this.addTag(this.state.tag.trim(), function() {
+          _this.props.onBlur(_this.state.tags)
+        });
+      }
+      _this.props.onBlur(_this.state.tags)
     },
 
     getTags () {
       return this.state.tags
     },
 
-    addTag(tag){
+    addTag(tag,cb){
       var before = this.props.onBeforeTagAdd(tag);
       var valid = !!before && this.props.validate(tag)
       tag = typeof before === "string" ? before : tag ;
@@ -114,6 +127,9 @@
       },function(){
         this.props.onTagAdd(tag);
         this.props.onChange(this.state.tags)
+        if( cb ){
+          return cb();
+        }
       })
     },
 

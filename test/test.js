@@ -1,4 +1,9 @@
 const jsdom = require("jsdom")
 const { JSDOM } = jsdom;
-const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
-console.log(dom.window.document.querySelector("p").textContent);
+const { window } = new JSDOM();
+const { document, navigator } = window
+global.document = document;
+global.window = window;
+global.navigator = navigator;
+
+var asset = require("assert");
