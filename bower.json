@@ -14,7 +14,7 @@
     "javascript",
     "react-component"
   ],
-  "version": "0.2.2",
+  "version": "0.2.4",
   "homepage": "https://github.com/andyxmq/tags-input",
   "private": true,
   "ignore": [
@@ -26,5 +26,9 @@
   ],
   "dependencies": {
     "react": "0.12.2"
+  },
+  "devDependencies": {
+    "jsdom": "3.0.2",
+    "mocha": "2.1.0"
   }
 }

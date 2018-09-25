@@ -53,6 +53,9 @@ Placeholder text for the add a tag input, default is "Add a tag".
 
 A function which returns true if a tag is valid, default function returns for every string but the empty string 
 
+##### classNamespace
+Namespace for class classes, default is `react` i.e css classes are `tagsinput`
+
 ### addKeys 
 
 An array of key codes that  add a tag, default is `[9, 13]` (Tab and Enter)
